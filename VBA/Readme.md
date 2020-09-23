@@ -128,3 +128,10 @@ Sub wsLoop():
 End Sub
 
 ```
+
+### Potential Trouble Spots
+1. I used a workaround to avoid dividing by 0 if the firstOpen was ever 0. Right now I assigned firstOpen to .0001 if it was 0 to avoid that. I did this to clean up my code since originally I had 3 different spots I was using if..else.. statements to make sure it wasn't 0 before going into another statement. I feel there should be a better workaround to avoid dividing by zero but I couldn't find it.
+
+2. I used variables that potentially changed every loop for the bonus standings table rather than scanning my summary table at the end. I was trying to use VLOOKUP or a similar VBA function to get the metrics from that table but couldn't get it to behave how I wanted so went for a more brute force method. I think with larger amounts of data it would be important to do this post-processing rather than adding comparisons in each loop. 
+
+3. If data is not sorted by Ticker Symbol and date this solution is useless.
