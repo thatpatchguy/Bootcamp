@@ -2,7 +2,9 @@
 For this project I was tasked with looping through raw stock data to summarize each ticker symbols performance based on specific metrics. It also will create a table summarizing the best and worst in specific metrics.
 
 Code is as follows:
-`Sub tickerChecker():
+`
+
+Sub tickerChecker():
     Dim tickerSymbol As String
     Dim combinedRow As Integer
     Dim firstOpen As Double
@@ -91,10 +93,14 @@ Code is as follows:
     Cells(4, 17) = greatestVolume
     Cells(2, 17).NumberFormat = "0.00%"
     Cells(3, 17).NumberFormat = "0.00%"
-End Sub`
+End Sub
+
+`
 
 I then used the following to do that on each page in the workbook:
-'Sub wsLoop():
+'
+
+Sub wsLoop():
     Dim ws As Worksheet
     Dim starting_ws As Worksheet
     Set starting_ws = ActiveSheet
@@ -107,4 +113,6 @@ I then used the following to do that on each page in the workbook:
     Next
     
     starting_ws.Activate
-End Sub'
+End Sub
+
+'
