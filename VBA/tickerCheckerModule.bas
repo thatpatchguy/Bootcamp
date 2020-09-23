@@ -1,16 +1,21 @@
 Attribute VB_Name = "Module1"
 Sub tickerChecker():
+    'Creating variables
     Dim tickerSymbol As String
     Dim combinedRow As Integer
     Dim firstOpen As Double
     Dim lastClose As Double
     Dim totalVolume As Double
+    
+    'These are to track the standings metrics
     Dim greatestPercent As Double
     Dim leastPercent As Double
     Dim greatestVolume As Double
     Dim greatestPercentT As String
     Dim leastPercentT As String
     Dim greatestVolumeT As String
+    
+    'Making the summary table start after the headers
     combinedRow = 2
     lastRow = Cells(Rows.Count, "A").End(xlUp).Row + 1
     
@@ -32,6 +37,7 @@ Sub tickerChecker():
     tickerSymbol = Cells(2, 1).Value
     firstOpen = Cells(2, 3).Value
     
+    'Loops through the raw data table one row at a time
     For i = 2 To lastRow
     
         'My code fills most things once it recognizes a change
@@ -40,11 +46,13 @@ Sub tickerChecker():
             Cells(combinedRow, 9).Value = tickerSymbol
             'Assign last close to row above its Close column
             lastClose = Cells(i - 1, 6).Value
+            
+            'Fill out metrics for the previous symbol
             Cells(combinedRow, 10).Value = lastClose - firstOpen
             Cells(combinedRow, 11).Value = (lastClose / firstOpen) - 1
             Cells(combinedRow, 12).Value = totalVolume
             
-            
+            'Here we check if it is higher or lower than any of the current Greatest metrics
             If (lastClose / firstOpen) > greatestPercent Then
                 greatestPercent = (lastClose / firstOpen)
                 greatestPercentT = tickerSymbol
@@ -58,6 +66,7 @@ Sub tickerChecker():
                 greatestVolumeT = tickerSymbol
             End If
             
+            'Bump down to the next row to get ready for next symbol
             combinedRow = combinedRow + 1
             Cells(combinedRow, 9).Value = Cells(i, 1).Value
             
@@ -67,41 +76,46 @@ Sub tickerChecker():
             tickerSymbol = Cells(i, 1).Value
             totalVolume = Cells(i, 7).Value
         Else
+            'All other cases between when they change we just care about the volume
             totalVolume = totalVolume + Cells(i, 7).Value
         End If
     Next i
+    
+    'Finds the last row of the summary table
     lastRow2 = Cells(Rows.Count, "K").End(xlUp).Row
+    'Changes color formatting based on metric
     For i = 2 To lastRow2
         If Cells(i, 11).Value > 0 Then
             Cells(i, 11).Interior.Color = RGB(0, 200, 0)
         Else
             Cells(i, 11).Interior.Color = RGB(200, 0, 0)
         End If
+        'To display the number as a percent
         Cells(i, 11).NumberFormat = "0.00%"
     Next i
     
+    'Fill out the metric standings table
     Cells(2, 16) = greatestPercentT
     Cells(3, 16) = leastPercentT
     Cells(4, 16) = greatestVolumeT
     Cells(2, 17) = greatestPercent - 1
     Cells(3, 17) = leastPercent - 1
     Cells(4, 17) = greatestVolume
+    'Make sure they are displayed as percentage
     Cells(2, 17).NumberFormat = "0.00%"
     Cells(3, 17).NumberFormat = "0.00%"
 End Sub
 
 Sub wsLoop():
+    'Sets worksheet as a variable and
     Dim ws As Worksheet
-    Dim starting_ws As Worksheet
-    Set starting_ws = ActiveSheet
     
+    'Steps through each worksheet in the workbook to call the tickerChecker function on it
     For Each ws In ThisWorkbook.Worksheets
         ws.Activate
         With ws
             Call tickerChecker
         End With
     Next
-    
-    starting_ws.Activate
 End Sub
 
