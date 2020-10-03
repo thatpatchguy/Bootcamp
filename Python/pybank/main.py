@@ -47,3 +47,17 @@ with open(csv_path) as csvfile:
     print(f"Average change: {round(statistics.mean(profitArray),2)}")
     print(f"Largest gain over period: {profitArray[biggestGain]} ({dateArray[biggestGain]})")
     print(f"Largest loss over period: {profitArray[biggestLoss]} ({dateArray[biggestLoss]})")
+#Close to prevent memory leaks
+csvfile.close()
+
+##Path to where to create the output csv
+output_path = "Resources/output.csv"
+with open(output_path, 'w') as csvfile:
+    csvwriter = csv.writer(csvfile, delimiter=',')
+    csvwriter.writerow(['Total Months on record',i])
+    csvwriter.writerow(['Net profit/losses over period',sum(profitArray)])
+    csvwriter.writerow(['Average change',round(statistics.mean(profitArray),2)])
+    csvwriter.writerow(['Largest gain over period',profitArray[biggestGain],dateArray[biggestGain]])
+    csvwriter.writerow(['Largest loss over period',profitArray[biggestLoss],dateArray[biggestLoss]])
+##Close to prevent memory leaks
+csvfile.close
