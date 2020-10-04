@@ -51,7 +51,7 @@ with open(csv_path) as csvfile:
 csvfile.close()
 
 ##Path to where to create the output csv
-output_path = "Resources/output.csv"
+output_path = "Analysis/output.csv"
 with open(output_path, 'w') as csvfile:
     csvwriter = csv.writer(csvfile, delimiter=',')
     csvwriter.writerow(['Total Months on record',i])

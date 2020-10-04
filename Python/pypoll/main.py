@@ -51,7 +51,7 @@ csv_file.close()
 
 
 ##Now do the same but print it to a text file
-output_path = "Resources/output.txt"
+output_path = "Analysis/output.txt"
 with open(output_path, 'w') as txtfile:
     txtfile.write("Election Results\n")
     txtfile.write('-------------------------------\n')
