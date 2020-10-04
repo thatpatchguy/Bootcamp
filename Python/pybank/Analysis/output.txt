@@ -1,0 +1,7 @@
+Election Results
+----------------------------------------
+Total Months on record: 86
+Net profit/losses over period: 38382578
+Average change: 446309.05
+Largest gain over period: 1170593 (Feb-2012)
+Largest loss over period: -1196225 (Sep-2013)
