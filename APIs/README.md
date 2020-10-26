@@ -21,4 +21,4 @@ I then recieved a list of 12 cities from my original 821 that fit my conditions.
 
 Then using those cities and google places API I was able to add pins to my heatmap with a hotel in each city that fits my conditions.
 
-![Heatmap](/heatmap.PNG)
+See heatmap for example.
