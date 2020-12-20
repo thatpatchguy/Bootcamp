@@ -1,7 +1,7 @@
 // from data.js
 var tableData = data;
 
-var tbody = d3.select("#ufo-table");
+var tbody = d3.select("#ufo-table-body");
 
 function makeTable(ufoData){
     tbody.html('');
@@ -19,11 +19,34 @@ makeTable(tableData);
 
  function filterTime() {
     d3.event.preventDefault();
+    var fullFilter = tableData;
     var dateFilter = d3.select('#datetime').property('value');
-    console.log(dateFilter);
-    var filteredEntries = tableData.filter(entry => entry.datetime === dateFilter);
-    console.log(filteredEntries);
-    makeTable(filteredEntries);
+    var cityFilter = d3.select('#city').property('value');
+    var stateFilter = d3.select('#state').property('value');
+    var countryFilter = d3.select('#country').property('value');
+    var shapeFilter = d3.select('#shape').property('value');
+
+    if (dateFilter != ''){
+        fullFilter = fullFilter.filter(entry => entry.datetime === dateFilter);
+        console.log(fullFilter);
+    }
+    if (cityFilter != ''){
+        fullFilter = fullFilter.filter(entry => entry.city === cityFilter);
+        console.log(fullFilter);
+    }
+    if (stateFilter != ''){
+        fullFilter = fullFilter.filter(entry => entry.state === stateFilter);
+        console.log(fullFilter);
+    }
+    if (countryFilter != ''){
+        fullFilter = fullFilter.filter(entry => entry.country === countryFilter);
+        console.log(fullFilter);
+    }
+    if (shapeFilter != ''){
+        fullFilter = fullFilter.filter(entry => entry.shape === shapeFilter);
+        console.log(fullFilter);
+    }
+    makeTable(fullFilter);
 };
 
 
