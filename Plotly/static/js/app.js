@@ -106,13 +106,14 @@ function buildGraphs(id){
             xaxis: {title: "OTU ID"},
             yaxis: {title: "OTU Level"}
         }
-
+        //Plot it!
         Plotly.newPlot("bubble", trace2Data, layout2);
 
-
+        //Now time to get the metadata for selected patient id
         var metadata = data.metadata[idIndex];
         var washFreq = metadata.wfreq;
 
+        // Trace for the gauge graph
         var trace3 = {
             domain: { x: [0, 1], y: [0, 1] },
             value: washFreq,
@@ -128,16 +129,20 @@ function buildGraphs(id){
                 ]
             }
         };
+        // Gauge trace, but this time its data
         var trace3Data = [trace3];
+        // Quite a simple layout dontcha think?
         var layout3 = {
             title: "Belly button washing frequency"
         };
 
+        // Plot that to that gauge div!
         Plotly.newPlot("gauge", trace3Data, layout3);
 
     })
 }
 
+// Now this function is exciting because it gets called from the html onchange
 function optionChanged(name){
     demographicData(name);
     buildGraphs(name);
