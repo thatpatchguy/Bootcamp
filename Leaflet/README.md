@@ -11,3 +11,5 @@ For this project I combined knowledge about API's, Leaftlet, and D3 to portray t
 ### Sources
 - Earthquakes: https://earthquake.usgs.gov
 - Tectonic Plates: https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json
+
+## https://thatpatchguy.github.io/thatpatchguy/earthquakes.html
