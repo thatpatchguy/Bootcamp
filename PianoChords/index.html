@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>D3Times</title>
+  <title>Chords</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
@@ -12,7 +12,33 @@
   <div class="container">
     <div class="jumbotron">
       <div class="col-xs-12 col-md-12">
-        <h1>Piano Chords</h1>
+        <h1>Basement Producers Toolkit</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div id="play_pause" class="row">
+      </div>
+      <div class="row">
+        <form id="dropdown" class="col-3">
+          <select id="drop1" onchange="drop1Changed()">
+            <option></option>
+          </select>
+        </form>
+        <form id="dropdown" class="col-3">
+          <select id="drop2" onchange="drop2Changed()">
+            <option></option>
+          </select>
+        </form>
+        <form id="dropdown" class="col-3">
+          <select id="drop3" onchange="drop3Changed()">
+            <option></option>
+          </select>
+        </form>
+        <form id="dropdown" class="col-3">
+          <select id="drop4" onchange="drop4Changed()">
+            <option></option>
+          </select>
+        </form>
       </div>
     </div>
     <div class="row">
@@ -22,12 +48,24 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <form id="dropdown" class="col-md-12">
+          <select id="song_drop" onchange="song_selected()">
+          </select>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-md-6">
+        <div id="song_intro_info" class="boxen"></div>
+      </div>
+      <div class="col-xs-6 col-md-6">
+        <div id="song_chords_info" class="boxen"></div>
+      </div>
+    </div>
   </div>
 
-  <!-- Footer-->
-  <div id="footer">
-    <p>&copy;Dylan Patch</p>
-  </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
