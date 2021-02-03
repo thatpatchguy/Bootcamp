@@ -1,10 +1,8 @@
 
 from flask import Flask
-from flask_cors import CORS
 
 import get_songs, get_chords
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
 
 @app.route("/")
 def welcome():

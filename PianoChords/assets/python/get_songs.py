@@ -2,9 +2,6 @@
 import os
 from bs4 import BeautifulSoup as bs
 import requests
-# from webdriver_manager.chrome import ChromeDriverManager
-from splinter import Browser
-import pandas as pd
 from flask import Flask, jsonify
 
 def get_em():
@@ -20,7 +17,7 @@ def get_em():
         
         title = song.find('p', class_='nome-musica').text
         artist = song.find('p', class_='nome-artista').text
-        var = [{'title': title, 'artist': artist}]
+        var = {'title': title, 'artist': artist}
         data.append(var)
 
     return jsonify(data)
