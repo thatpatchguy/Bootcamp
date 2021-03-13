@@ -197,7 +197,7 @@ function drop4Changed(){
     makeChords(selection);
 }
 
-d3.json('http://127.0.0.1:5000/get_songs').then(function(scrape_data){
+d3.json('https://basement-producers-toolkit.herokuapp.com/get_songs').then(function(scrape_data){
     song_drop = document.getElementById("song_drop");
 
     scrape_data.forEach(song => {
@@ -217,7 +217,7 @@ d3.json('http://127.0.0.1:5000/get_songs').then(function(scrape_data){
 
 function song_selected(){
     var selected_song = document.getElementById("song_drop").value;
-    d3.json(`http://127.0.0.1:5000${selected_song}`).then(function(chord_data){
+    d3.json(`https://basement-producers-toolkit.herokuapp.com/${selected_song}`).then(function(chord_data){
         var intro = document.getElementById("song_intro_info");
         var allChords = document.getElementById("song_chords_info");
         var intro_html = `<h2>Intro Chords</h2> <br><h4>`;
@@ -225,7 +225,10 @@ function song_selected(){
                                 `<table style="width:100%">`+
                                     `<tr><th>Chord</th><th>Occurences</th></tr>`;
         the_chords = chord_data[1][0];
-        for (const property in the_chords){
+        console.log(the_chords);
+        console.log(chord_data);
+        for (const property in the_chords.all_chords){
+
             html_stuff += `<tr><td>${property}</td><td>${the_chords[property]}</td></tr>`;
         }
         html_stuff += `</table>`;

@@ -18,7 +18,7 @@ def get_em():
         title = song.find('p', class_='nome-musica').text
         artist = song.find('p', class_='nome-artista').text
         var = {'title': title, 'artist': artist}
-        data.append(var)
+        data.append([var])
 
     return jsonify(data)
 
